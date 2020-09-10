@@ -62,6 +62,12 @@ table {
     background: transparent url(image/enemy2.png) center / cover no-repeat;
 }
 
+.game {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
 .gameArea {
     position: relative;
     width: 300px;
@@ -108,4 +114,37 @@ table {
     color: skyblue;
     background-color: #000;
     text-align: center;
+}
+
+.btn {
+    position: absolute;
+    bottom: 0;
+}
+
+.btn svg {
+    width: 30px;
+    height: 30px;
+    fill: greenyellow;
+}
+
+.btn:nth-child(1) {
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn:nth-child(2) {
+    right: 20px;
+    bottom: 30px;
+}
+
+.btn:nth-child(3) {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn:nth-child(4) {
+    bottom: 30px;
+    left: 20px;
 }

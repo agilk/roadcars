@@ -5,6 +5,7 @@ const score = document.querySelector('.score');
 const start = document.querySelector('.start');
 const gameArea = document.querySelector('.gameArea');
 const car = document.createElement('div');
+const btns = document.querySelectorAll('.btn');
 
 car.classList.add('car');
 
@@ -30,6 +31,12 @@ function getQuantityElements(heightElement) {
 start.addEventListener('click', startGame);
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);
+btns.forEach(btn => {
+    btn.addEventListener('mousedown', startRun);
+    btn.addEventListener('mouseup', stopRun);
+    btn.addEventListener('touchstart', startRun);
+    btn.addEventListener('touchend', stopRun);
+});
 
 function startGame () {
     start.classList.add('hide');
@@ -89,13 +96,15 @@ function playGame () {
 
 function startRun(event) {
     event.preventDefault();
-    keys[event.key] = true;
+    const key = event.currentTarget.dataset.button ? event.currentTarget.dataset.button :  event.key;
+    keys[key] = true;
 }
 
 
 function stopRun(event) {
     event.preventDefault();
-    keys[event.key] = false;
+    const key = event.currentTarget.dataset.button ? event.currentTarget.dataset.button :  event.key;
+    keys[key] = false;
 }
 
 function moveRoad () {
@@ -125,7 +134,7 @@ function moveEnemy () {
         ) {
             setting.start = false;
             start.classList.remove('hide');
-            start.style.top = score.clientHeight;
+            start.style.top = `${score.clientHeight}px`;
         }
 
         enemy.y += setting.speed / 1.25;
